@@ -1,27 +1,27 @@
 class Solution {
-public:
-    int binSearch(vector<int>& arr,int tar,int st,int end ){
-        if(st<=end){
-            int mid= st + (end-st)/2;
-
-            if(arr[mid]==tar) {
+    public int search(int[] nums, int target) {
+        int start=0;
+        int end=nums.length-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(target==nums[mid]){
                 return mid;
             }
-            else if(arr[mid]<=tar){
-                return binSearch(arr, tar,mid+1,end);
-
+            else if(target<nums[mid]){
+                end=mid-1;
             }
             else{
-                return binSearch(arr,tar,st,mid-1);
-            }
-           
+                start=mid+1;
+            }        
         }
-        return -1;
+        return -1; //in case when target is not found 
     }
+    public static void main(String[]args){
+        int nums[]={};
+        int target=9;
 
-    int search(vector<int>& arr, int tar) {
-        return binSearch(arr,tar,0,arr.size()-1);
-        
+        Solution obj=new Solution();
+        int result=obj.search(nums,target);
         
     }
-};
+}
