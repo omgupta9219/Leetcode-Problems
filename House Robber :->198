@@ -1,0 +1,13 @@
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==0)return 0;
+        int first=0;
+        int second=0;
+        for(int val:nums){
+            int temp=second;
+            second=Math.max(second,first+val);
+            first=temp;
+        }
+    return second;    
+    }
+}
